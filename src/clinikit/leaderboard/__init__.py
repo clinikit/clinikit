@@ -1,16 +1,27 @@
-"""clinikit.leaderboard — experiment-tracking CSV with a fixed schema.
+"""clinikit.leaderboard — experiment tracking CSV with a fixed schema.
 
-The leaderboard stores one row per experiment run with 38 columns
-covering dataset, model, hyperparameters, split, metrics, calibration,
-and reproducibility metadata.
+One row per experiment run, 38 fixed columns. The schema is exposed
+as :data:`LEADERBOARD_COLUMNS` for downstream tooling.
 
 Public functions
 ----------------
-- new_leaderboard(path)
-- append_run(path, row)
-- read_leaderboard(path)
+- :func:`new_leaderboard`  — create an empty CSV with the header.
+- :func:`append_run`       — append a single run row.
+- :func:`read_leaderboard` — read the CSV into a ``pandas.DataFrame``.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.leaderboard._leaderboard import (
+    LEADERBOARD_COLUMNS,
+    append_run,
+    new_leaderboard,
+    read_leaderboard,
+)
+
+__all__ = [
+    "LEADERBOARD_COLUMNS",
+    "append_run",
+    "new_leaderboard",
+    "read_leaderboard",
+]
