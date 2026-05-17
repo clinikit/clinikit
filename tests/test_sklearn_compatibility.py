@@ -18,16 +18,26 @@ from sklearn.utils.estimator_checks import check_estimator
 
 from clinikit.models import (
     BoundaryRefineClassifier,
+    DialecticalEnsemble,
+    DualViewCoTrainer,
+    HardSampleWeightedEnsemble,
     InstanceAdaptiveThreshold,
+    LatentSubtypeRouter,
     RuleAugmentedClassifier,
     SubgroupThresholdClassifier,
 )
 
 CLINIKIT_PUBLIC_ESTIMATORS: list[type[BaseEstimator]] = [
+    # G1 — threshold family
     RuleAugmentedClassifier,
     BoundaryRefineClassifier,
     SubgroupThresholdClassifier,
     InstanceAdaptiveThreshold,
+    # G2 — ensemble / routing family
+    HardSampleWeightedEnsemble,
+    DialecticalEnsemble,
+    LatentSubtypeRouter,
+    DualViewCoTrainer,
 ]
 
 
