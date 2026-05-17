@@ -99,10 +99,6 @@ clinikit = "clinikit.cli:app"
 [tool.hatch.build.targets.wheel]
 packages = ["src/clinikit"]
 
-[tool.hatch.build.targets.wheel.force-include]
-"src/clinikit/datasets/data" = "clinikit/datasets/data"
-"src/clinikit/report/templates" = "clinikit/report/templates"
-
 [tool.hatch.build.targets.sdist]
 include = [
     "src/clinikit",
