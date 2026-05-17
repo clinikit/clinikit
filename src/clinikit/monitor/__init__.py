@@ -1,16 +1,34 @@
-"""clinikit.monitor — drift detection and performance monitoring.
+"""clinikit.monitor — drift detection and rolling performance.
 
-Drift tests
------------
-- ks_drift(reference, current, *, alpha=0.05)
-- wasserstein_drift(reference, current)
-- psi_drift(reference, current, *, n_bins=10)
+Public functions
+----------------
+- :func:`ks_drift`           — two-sample Kolmogorov-Smirnov test.
+- :func:`wasserstein_drift`  — 1-Wasserstein distance.
+- :func:`psi_drift`          — Population Stability Index.
+- :func:`track_performance`  — rolling-window metric across a log.
 
-Performance monitor
--------------------
-- track_performance(predictions_log, ground_truth_log)
+Public dataclasses
+------------------
+- :class:`DriftResult`
+- :class:`PerformanceTrack`
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.monitor._drift import (
+    DriftResult,
+    PerformanceTrack,
+    ks_drift,
+    psi_drift,
+    track_performance,
+    wasserstein_drift,
+)
+
+__all__ = [
+    "DriftResult",
+    "PerformanceTrack",
+    "ks_drift",
+    "psi_drift",
+    "track_performance",
+    "wasserstein_drift",
+]
