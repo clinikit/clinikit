@@ -135,19 +135,13 @@ clinikit report     --leaderboard runs.csv --out report.html
 
 ---
 
-## Development Notes
+## Project notes
 
-`clinikit` was developed with AI assistance. Design discussions, code
-generation, and documentation drafts were produced with Anthropic's
-Claude. Final decisions, integration choices, testing, and the
-public release have been reviewed and approved by the author
-(Berat Kaan SEVEN).
-
-This package is an integration toolkit. The methods it bundles are
+`clinikit` is an integration toolkit. The methods it bundles are
 adaptations of techniques published in the academic literature; see
-[`CITATIONS.md`](CITATIONS.md) for source-method references. `clinikit`
-is not a research paper of original methods, and it is not a regulated
-product. It is a research and development library only.
+[`CITATIONS.md`](CITATIONS.md) for source-method references. It is
+not a research paper of original methods, and it is not a regulated
+product. Research and development use only.
 
 ---
 

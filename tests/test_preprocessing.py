@@ -177,6 +177,14 @@ def test_domain_aware_imputer_get_feature_names_out_with_dataframe() -> None:
     assert list(imp.get_feature_names_out()) == ["age", "bmi"]
 
 
+def test_domain_aware_imputer_get_feature_names_out_with_ndarray() -> None:
+    # When fitted on an ndarray, validate_data does not set
+    # feature_names_in_, so the fallback must synthesise "x0", "x1", ...
+    X = np.array([[1.0, 2.0], [3.0, 4.0]])
+    imp = DomainAwareImputer().fit(X)
+    assert list(imp.get_feature_names_out()) == ["x0", "x1"]
+
+
 # ---------------------------------------------------------------------------
 # OutlierFlag
 # ---------------------------------------------------------------------------
@@ -224,6 +232,14 @@ def test_outlier_flag_feature_names_out_with_dataframe() -> None:
     df = pd.DataFrame({"age": [1.0, 2.0, 3.0, 4.0], "bmi": [10.0, 20.0, 30.0, 40.0]})
     flag = OutlierFlag().fit(df)
     assert list(flag.get_feature_names_out()) == ["age_outlier", "bmi_outlier"]
+
+
+def test_outlier_flag_feature_names_out_with_ndarray() -> None:
+    # Fitted on an ndarray, so feature_names_in_ is absent and the
+    # fallback should synthesise "x0_outlier", "x1_outlier".
+    X = np.array([[1.0, 10.0], [2.0, 20.0], [3.0, 30.0], [4.0, 40.0]])
+    flag = OutlierFlag().fit(X)
+    assert list(flag.get_feature_names_out()) == ["x0_outlier", "x1_outlier"]
 
 
 # ---------------------------------------------------------------------------

@@ -208,3 +208,36 @@ def test_ece_quantile_strategy_runs(rng: np.random.Generator) -> None:
     y_prob = rng.uniform(0, 1, size=200)
     ece = expected_calibration_error(y_true, y_prob, n_bins=10, strategy="quantile")
     assert 0.0 <= ece <= 1.0
+
+
+def test_probabilistic_metrics_reject_2d_y_prob() -> None:
+    # The package's binary-only API rejects 2-D probability arrays so
+    # users do not accidentally pass a (n, n_classes) sklearn-style
+    # output without choosing a positive column.
+    y_true = [0, 1, 0, 1]
+    y_prob_2d = np.array([[0.9, 0.1], [0.2, 0.8], [0.7, 0.3], [0.4, 0.6]])
+    with pytest.raises(ValueError, match="1-D"):
+        brier_score(y_true, y_prob_2d)
+    with pytest.raises(ValueError, match="1-D"):
+        expected_calibration_error(y_true, y_prob_2d)
+
+
+def test_brier_score_respects_sample_weight() -> None:
+    # Manually weighted Brier: rows 0 and 1 carry all the mass and
+    # match exactly (zero error); row 2 has weight 0 so the perfect
+    # mis-prediction does not count.
+    y_true = [0, 1, 1]
+    y_prob = [0.0, 1.0, 0.0]
+    weighted = brier_score(y_true, y_prob, sample_weight=[1.0, 1.0, 0.0])
+    assert weighted == pytest.approx(0.0)
+    # Sanity: unweighted is not zero because of the wrong row 2.
+    assert brier_score(y_true, y_prob) > 0.0
+
+
+def test_ece_respects_sample_weight() -> None:
+    # Two perfectly-calibrated points carry positive weight; a third
+    # confident-wrong point has zero weight, so ECE collapses to 0.
+    y_true = [0, 1, 0]
+    y_prob = [0.0, 1.0, 1.0]
+    weighted = expected_calibration_error(y_true, y_prob, n_bins=2, sample_weight=[1.0, 1.0, 0.0])
+    assert weighted == pytest.approx(0.0)
