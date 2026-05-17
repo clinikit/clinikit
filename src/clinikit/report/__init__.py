@@ -1,15 +1,26 @@
 """clinikit.report — HTML structured report generator.
 
-Reports are rendered from Jinja2 templates shipped under
-``clinikit/report/templates``. The default template covers dataset
-summary, model configuration, training/test metrics, calibration
-diagnostics, and a reproducibility manifest.
+Renders a single self-contained HTML file from a run record and an
+optional leaderboard DataFrame. Templates ship under
+``clinikit/report/templates`` and are resolved via
+:mod:`importlib.resources`, so the package works after a clean
+``pip install clinikit``.
 
 Public functions
 ----------------
-- render_report(run, out_path, *, template="default.html.j2")
+- :func:`render_report`                  — render a single-run report.
+- :func:`render_report_from_leaderboard` — render a leaderboard-only
+  report from a CSV path.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.report._report import (
+    render_report,
+    render_report_from_leaderboard,
+)
+
+__all__ = [
+    "render_report",
+    "render_report_from_leaderboard",
+]
