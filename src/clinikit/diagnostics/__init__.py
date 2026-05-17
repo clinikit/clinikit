@@ -1,17 +1,33 @@
-"""clinikit.diagnostics — label-noise and stability diagnostics.
+"""clinikit.diagnostics — label-noise and training-set stability tools.
 
 Public functions
 ----------------
-- cleanlab_label_issues(X, y, base_estimator)
-- neighborhood_conflict(X, y, *, n_neighbors=10)
-- loo_influence(X, y, base_estimator)
-- seed_stability(X, y, estimator_factory, *, seeds, scoring)
+- :func:`cleanlab_label_issues`  — Cleanlab-based noisy-label detection
+  (lazy-imports the optional ``[diagnostics]`` extra).
+- :func:`neighborhood_conflict`  — per-sample k-NN label-disagreement rate.
+- :func:`loo_influence`          — leave-one-out training influence (subsampled).
+- :func:`seed_stability`         — distribution of an evaluation metric
+  across multiple random seeds.
 
-``cleanlab_label_issues`` requires the optional ``[diagnostics]``
-extra; the function raises a helpful ``ImportError`` if Cleanlab is
-not installed.
+Public dataclasses
+------------------
+- :class:`SeedStabilityResult`
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.diagnostics._diagnostics import (
+    SeedStabilityResult,
+    cleanlab_label_issues,
+    loo_influence,
+    neighborhood_conflict,
+    seed_stability,
+)
+
+__all__ = [
+    "SeedStabilityResult",
+    "cleanlab_label_issues",
+    "loo_influence",
+    "neighborhood_conflict",
+    "seed_stability",
+]

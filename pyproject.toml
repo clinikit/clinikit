@@ -157,6 +157,10 @@ ignore = [
 # delegates to plots, plot_* helpers resolve curves dataclasses).
 "src/clinikit/curves/_curves.py" = ["PLC0415"]
 "src/clinikit/plots/_plots.py"   = ["PLC0415"]
+# Optional-dependency lazy imports (Cleanlab) live inside the
+# diagnostics function bodies so the package imports cleanly when
+# the extra is not installed — that is the intended pattern.
+"src/clinikit/diagnostics/_diagnostics.py" = ["PLC0415"]
 
 [tool.ruff.lint.pep8-naming]
 # sklearn convention: uppercase X / X_train / X_test for feature
