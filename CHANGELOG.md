@@ -7,8 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Project skeleton, packaging configuration, and CI scaffolding.
+## [0.1.1] - 2026-05-17
+
+### Fixed
+- README links to project files (`CITATIONS.md`, `CONTRIBUTING.md`,
+  `CODE_OF_CONDUCT.md`, `CITATION.cff`, `LICENSE`, and the quickstart
+  notebook) now use absolute GitHub URLs so they resolve correctly
+  from the PyPI project page. Relative paths were 404'ing on PyPI
+  because the long description is rendered outside the repository
+  context.
 
 ## [0.1.0] - 2026-05-17
 
@@ -63,5 +70,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Sphinx documentation scaffold, Read the Docs configuration.
 - MIT license.
 
-[Unreleased]: https://github.com/clinikit/clinikit/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/clinikit/clinikit/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/clinikit/clinikit/releases/tag/v0.1.1
 [0.1.0]: https://github.com/clinikit/clinikit/releases/tag/v0.1.0

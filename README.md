@@ -9,13 +9,13 @@ audits, and structured HTML reports behind a single drop-in package.
 
 Research and development use only. This is an integration toolkit,
 not a regulated product and not a research paper of original methods.
-See [`CITATIONS.md`](CITATIONS.md) for source-method references.
+See [`CITATIONS.md`](https://github.com/clinikit/clinikit/blob/main/CITATIONS.md) for source-method references.
 
 [![CI](https://github.com/clinikit/clinikit/actions/workflows/ci.yml/badge.svg)](https://github.com/clinikit/clinikit/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/clinikit/clinikit/branch/main/graph/badge.svg)](https://codecov.io/gh/clinikit/clinikit)
 [![PyPI version](https://img.shields.io/pypi/v/clinikit.svg)](https://pypi.org/project/clinikit/)
 [![Python versions](https://img.shields.io/pypi/pyversions/clinikit.svg)](https://pypi.org/project/clinikit/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/clinikit/clinikit/blob/main/LICENSE)
 [![Documentation Status](https://readthedocs.org/projects/clinikit/badge/?version=latest)](https://clinikit.readthedocs.io/en/latest/?badge=latest)
 
 ---
@@ -79,7 +79,7 @@ print("Sensitivity:", sensitivity(y_test, y_pred))
 print("Specificity:", specificity(y_test, y_pred))
 ```
 
-For a complete walkthrough, see [`examples/quickstart.ipynb`](examples/quickstart.ipynb)
+For a complete walkthrough, see [`examples/quickstart.ipynb`](https://github.com/clinikit/clinikit/blob/main/examples/quickstart.ipynb)
 or open it in
 [Colab](https://colab.research.google.com/github/clinikit/clinikit/blob/main/examples/quickstart.ipynb).
 
@@ -141,7 +141,7 @@ clinikit report     --leaderboard runs.csv --out report.html
 
 `clinikit` is an integration toolkit. The methods it bundles are
 adaptations of techniques published in the academic literature; see
-[`CITATIONS.md`](CITATIONS.md) for source-method references. It is
+[`CITATIONS.md`](https://github.com/clinikit/clinikit/blob/main/CITATIONS.md) for source-method references. It is
 not a research paper of original methods, and it is not a regulated
 product. Research and development use only.
 
@@ -149,17 +149,17 @@ product. Research and development use only.
 
 ## Contributing
 
-Contributions are welcome. Please read [`CONTRIBUTING.md`](CONTRIBUTING.md)
+Contributions are welcome. Please read [`CONTRIBUTING.md`](https://github.com/clinikit/clinikit/blob/main/CONTRIBUTING.md)
 for the development workflow, coding standards, and pull-request
 process. By participating, you agree to abide by the
-[`Code of Conduct`](CODE_OF_CONDUCT.md).
+[`Code of Conduct`](https://github.com/clinikit/clinikit/blob/main/CODE_OF_CONDUCT.md).
 
 ---
 
 ## Citation
 
 If you use `clinikit` in academic work, please cite it via the
-[`CITATION.cff`](CITATION.cff) file, or use:
+[`CITATION.cff`](https://github.com/clinikit/clinikit/blob/main/CITATION.cff) file, or use:
 
 ```bibtex
 @software{clinikit,
@@ -175,4 +175,4 @@ If you use `clinikit` in academic work, please cite it via the
 
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](LICENSE) for the full text.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/clinikit/clinikit/blob/main/LICENSE) for the full text.
