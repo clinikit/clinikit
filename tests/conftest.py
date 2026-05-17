@@ -11,9 +11,14 @@ from numpy.typing import NDArray
 DEFAULT_SEED = 42
 
 
-@pytest.fixture(scope="session")
+@pytest.fixture
 def rng() -> np.random.Generator:
-    """A deterministic numpy generator shared across tests."""
+    """A fresh deterministic numpy generator per test.
+
+    Function-scoped so test ordering can never leak rng state between
+    tests — this was previously a Windows-only flake source where
+    pytest collected files in a different order than on Linux / macOS.
+    """
     return np.random.default_rng(DEFAULT_SEED)
 
 

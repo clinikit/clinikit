@@ -20,7 +20,13 @@ from clinikit.monitor import (
 # ---------------------------------------------------------------------------
 
 
-def test_ks_drift_same_distribution_no_drift(rng: np.random.Generator) -> None:
+def test_ks_drift_same_distribution_no_drift() -> None:
+    # Fixed local seed so the test is deterministic on every platform.
+    # KS p-value is uniformly distributed under H0, so a session-scoped
+    # rng plus differing test orders on Windows used to flip this test
+    # at ~5% rate; an explicit seed pins ref/cur to a sample we know
+    # KS classifies as non-drifting.
+    rng = np.random.default_rng(0)
     ref = rng.standard_normal(500)
     cur = rng.standard_normal(500)
     result = ks_drift(ref, cur)
