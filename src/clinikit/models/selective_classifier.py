@@ -107,11 +107,7 @@ class SelectiveClassifier(ClassifierMixin, BaseEstimator):
         # Quantile of (1 - coverage) gives the threshold below which
         # distances are smallest (those samples abstain). Coverage=1
         # collapses the band to a point.
-        half = (
-            0.0
-            if self.coverage == 1.0
-            else float(np.quantile(distances, 1.0 - self.coverage))
-        )
+        half = 0.0 if self.coverage == 1.0 else float(np.quantile(distances, 1.0 - self.coverage))
         self.abstain_low_ = max(0.0, 0.5 - half)
         self.abstain_high_ = min(1.0, 0.5 + half)
         return self

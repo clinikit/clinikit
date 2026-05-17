@@ -27,17 +27,24 @@ G3 — calibration / monotonic / abstention
 - :class:`MonotonicBooster`
 - :class:`SelectiveClassifier`
 
-Remaining classes ship in G4; see ``roadmap.md``.
+G4 — imputation / distillation / label refinement
+
+- :class:`ClassConditionalImputer`
+- :class:`CrossDistributionDistiller`
+- :class:`IterativeLabelRefiner`
 """
 
 from __future__ import annotations
 
 from clinikit.models.boundary_refine import BoundaryRefineClassifier
+from clinikit.models.class_conditional_imputer import ClassConditionalImputer
+from clinikit.models.cross_distribution_distiller import CrossDistributionDistiller
 from clinikit.models.dialectical_ensemble import DialecticalEnsemble
 from clinikit.models.dual_view_cotrainer import DualViewCoTrainer
 from clinikit.models.error_aware_calibrator import ErrorAwareCalibrator
 from clinikit.models.hard_sample_weighted_ensemble import HardSampleWeightedEnsemble
 from clinikit.models.instance_adaptive_threshold import InstanceAdaptiveThreshold
+from clinikit.models.iterative_label_refiner import IterativeLabelRefiner
 from clinikit.models.latent_subtype_router import LatentSubtypeRouter
 from clinikit.models.monotonic_booster import MonotonicBooster
 from clinikit.models.rule_augmented import RuleAugmentedClassifier
@@ -46,11 +53,14 @@ from clinikit.models.subgroup_threshold import SubgroupThresholdClassifier
 
 __all__ = [
     "BoundaryRefineClassifier",
+    "ClassConditionalImputer",
+    "CrossDistributionDistiller",
     "DialecticalEnsemble",
     "DualViewCoTrainer",
     "ErrorAwareCalibrator",
     "HardSampleWeightedEnsemble",
     "InstanceAdaptiveThreshold",
+    "IterativeLabelRefiner",
     "LatentSubtypeRouter",
     "MonotonicBooster",
     "RuleAugmentedClassifier",

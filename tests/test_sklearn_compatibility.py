@@ -18,11 +18,14 @@ from sklearn.utils.estimator_checks import check_estimator
 
 from clinikit.models import (
     BoundaryRefineClassifier,
+    ClassConditionalImputer,
+    CrossDistributionDistiller,
     DialecticalEnsemble,
     DualViewCoTrainer,
     ErrorAwareCalibrator,
     HardSampleWeightedEnsemble,
     InstanceAdaptiveThreshold,
+    IterativeLabelRefiner,
     LatentSubtypeRouter,
     MonotonicBooster,
     RuleAugmentedClassifier,
@@ -45,6 +48,10 @@ CLINIKIT_PUBLIC_ESTIMATORS: list[type[BaseEstimator]] = [
     ErrorAwareCalibrator,
     MonotonicBooster,
     SelectiveClassifier,
+    # G4 — imputation / distillation / label refinement
+    ClassConditionalImputer,
+    CrossDistributionDistiller,
+    IterativeLabelRefiner,
 ]
 
 
