@@ -7,7 +7,6 @@ authors:
     given-names: Berat Kaan
     email: beratkaanseven@gmail.com
     website: "https://beratkaanseven.com"
-    orcid: "https://orcid.org/0000-0000-0000-0000"
 identifiers:
   - type: url
     value: "https://github.com/clinikit/clinikit"

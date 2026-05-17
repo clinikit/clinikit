@@ -12,8 +12,8 @@ subject to community feedback.
 
 ## v0.1.0 — Foundation release (target 2026-Q3)
 
-The first public release ships all 27 modules described in the
-`MoSCoW Scope` section of `CLAUDE.md`. Highlights:
+The first public release ships all 27 modules in the package.
+Highlights:
 
 - :seedling: 14 sklearn-compatible hybrid classifiers (`models`).
 - :seedling: Preprocessing, metrics, curves, plotting utilities.

@@ -79,7 +79,7 @@ automl      = ["tabpfn>=2.0", "flaml>=2.2", "autogluon.tabular>=1.1"]
 synthetic   = ["sdv>=1.17"]
 advanced    = ["ngboost>=0.5", "interpret>=0.6", "feature-engine>=1.8"]
 conformal   = ["mapie>=0.9"]
-active      = ["modAL>=0.4"]
+active      = ["modAL-python>=0.4"]
 all = [
     "clinikit[dev,docs,diagnostics,explain,automl,synthetic,advanced,conformal,active]",
 ]

@@ -59,17 +59,19 @@ Supported Python versions: 3.10, 3.11, 3.12, 3.13.
 ## Quickstart
 
 ```python
-from clinikit.datasets import load_pima
-from clinikit.models import RuleAugmentedClassifier
-from clinikit.metrics import sensitivity, specificity
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+
+from clinikit.datasets import load_pima
+from clinikit.metrics import sensitivity, specificity
+from clinikit.models import RuleAugmentedClassifier
 
 X, y = load_pima(return_X_y=True)
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42, stratify=y
 )
 
-model = RuleAugmentedClassifier(random_state=42)
+model = RuleAugmentedClassifier(base_estimator=LogisticRegression(max_iter=1000))
 model.fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
