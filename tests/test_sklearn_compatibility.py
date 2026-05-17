@@ -20,10 +20,13 @@ from clinikit.models import (
     BoundaryRefineClassifier,
     DialecticalEnsemble,
     DualViewCoTrainer,
+    ErrorAwareCalibrator,
     HardSampleWeightedEnsemble,
     InstanceAdaptiveThreshold,
     LatentSubtypeRouter,
+    MonotonicBooster,
     RuleAugmentedClassifier,
+    SelectiveClassifier,
     SubgroupThresholdClassifier,
 )
 
@@ -38,6 +41,10 @@ CLINIKIT_PUBLIC_ESTIMATORS: list[type[BaseEstimator]] = [
     DialecticalEnsemble,
     LatentSubtypeRouter,
     DualViewCoTrainer,
+    # G3 — calibration / monotonic / abstention
+    ErrorAwareCalibrator,
+    MonotonicBooster,
+    SelectiveClassifier,
 ]
 
 
