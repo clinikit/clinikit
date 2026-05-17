@@ -2,10 +2,19 @@
 
 Public functions
 ----------------
-- validate_external(model, train_dataset, external_datasets, *, metrics)
-- domain_shift_report(reference, target)
+- :func:`validate_external`   — fit on one dataset, evaluate on many.
+- :func:`domain_shift_report` — per-feature drift between two matrices
+  via KS + PSI.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.external_val._external import (
+    domain_shift_report,
+    validate_external,
+)
+
+__all__ = [
+    "domain_shift_report",
+    "validate_external",
+]
