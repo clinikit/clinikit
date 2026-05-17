@@ -16,7 +16,19 @@ import pytest
 from sklearn.base import BaseEstimator
 from sklearn.utils.estimator_checks import check_estimator
 
-CLINIKIT_PUBLIC_ESTIMATORS: list[type[BaseEstimator]] = []
+from clinikit.models import (
+    BoundaryRefineClassifier,
+    InstanceAdaptiveThreshold,
+    RuleAugmentedClassifier,
+    SubgroupThresholdClassifier,
+)
+
+CLINIKIT_PUBLIC_ESTIMATORS: list[type[BaseEstimator]] = [
+    RuleAugmentedClassifier,
+    BoundaryRefineClassifier,
+    SubgroupThresholdClassifier,
+    InstanceAdaptiveThreshold,
+]
 
 
 @pytest.mark.sklearn_api

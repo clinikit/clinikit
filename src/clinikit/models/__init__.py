@@ -5,24 +5,26 @@ Every public class in this subpackage inherits from
 passes ``sklearn.utils.estimator_checks.check_estimator``, and stores
 fitted attributes with a trailing underscore.
 
-Public classes
---------------
-RuleAugmentedClassifier
-BoundaryRefineClassifier
-SubgroupThresholdClassifier
-ErrorAwareCalibrator
-MonotonicBooster
-HardSampleWeightedEnsemble
-ClassConditionalImputer
-CrossDistributionDistiller
-SelectiveClassifier
-InstanceAdaptiveThreshold
-DialecticalEnsemble
-LatentSubtypeRouter
-IterativeLabelRefiner
-DualViewCoTrainer
+Public classes (G1 — threshold family)
+--------------------------------------
+- :class:`RuleAugmentedClassifier`
+- :class:`BoundaryRefineClassifier`
+- :class:`SubgroupThresholdClassifier`
+- :class:`InstanceAdaptiveThreshold`
+
+Remaining classes ship in subsequent groups; see ``roadmap.md``.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.models.boundary_refine import BoundaryRefineClassifier
+from clinikit.models.instance_adaptive_threshold import InstanceAdaptiveThreshold
+from clinikit.models.rule_augmented import RuleAugmentedClassifier
+from clinikit.models.subgroup_threshold import SubgroupThresholdClassifier
+
+__all__ = [
+    "BoundaryRefineClassifier",
+    "InstanceAdaptiveThreshold",
+    "RuleAugmentedClassifier",
+    "SubgroupThresholdClassifier",
+]
