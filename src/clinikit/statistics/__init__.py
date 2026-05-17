@@ -1,12 +1,34 @@
 """clinikit.statistics — statistical tests for model comparison.
 
+Public results
+--------------
+- :class:`DelongResult`
+- :class:`BootstrapCI`
+- :class:`McNemarResult`
+
 Public functions
 ----------------
-- delong_test(y_true, y_prob_a, y_prob_b)
-- bootstrap_ci(scores, *, n_resamples=1000, alpha=0.05, random_state=None)
-- mcnemar_test(y_true, y_pred_a, y_pred_b)
+- :func:`delong_test`         — paired AUC comparison
+- :func:`bootstrap_ci`        — percentile-bootstrap CI for any binary metric
+- :func:`mcnemar_test`        — paired hard-prediction comparison
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.statistics._tests import (
+    BootstrapCI,
+    DelongResult,
+    McNemarResult,
+    bootstrap_ci,
+    delong_test,
+    mcnemar_test,
+)
+
+__all__ = [
+    "BootstrapCI",
+    "DelongResult",
+    "McNemarResult",
+    "bootstrap_ci",
+    "delong_test",
+    "mcnemar_test",
+]

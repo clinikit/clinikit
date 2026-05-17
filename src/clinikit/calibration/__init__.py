@@ -1,19 +1,31 @@
 """clinikit.calibration — post-hoc probability calibration.
 
-Calibrators
------------
-- PlattCalibrator
-- IsotonicCalibrator
-- TemperatureScaler
+Each calibrator fits on uncalibrated probabilities + binary labels
+and produces a calibrated probability vector. They operate on a 1-D
+probability vector — apply them *after* a base classifier's
+:meth:`predict_proba`, not inside an sklearn feature pipeline.
 
-All calibrators follow the sklearn ``fit`` / ``transform`` /
-``predict_proba`` API and may be plugged into pipelines.
+Public classes
+--------------
+- :class:`PlattCalibrator`     — sigmoid fit on logits.
+- :class:`IsotonicCalibrator`  — non-parametric monotonic fit.
+- :class:`TemperatureScaler`   — single-parameter logit scaling.
 
-Public functions
-----------------
-- reliability_diagram(y_true, y_prob, *, n_bins=10, ax=None)
+The reliability-diagram helper lives in :mod:`clinikit.curves`
+(:func:`~clinikit.curves.calibration_curve_data`) and is plotted via
+:func:`clinikit.plots.plot_calibration`.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.calibration._calibrators import (
+    IsotonicCalibrator,
+    PlattCalibrator,
+    TemperatureScaler,
+)
+
+__all__ = [
+    "IsotonicCalibrator",
+    "PlattCalibrator",
+    "TemperatureScaler",
+]

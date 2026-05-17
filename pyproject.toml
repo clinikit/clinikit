@@ -160,8 +160,14 @@ ignore = [
 
 [tool.ruff.lint.pep8-naming]
 # sklearn convention: uppercase X / X_train / X_test for feature
-# matrices and return_X_y for the load-data flag.
-extend-ignore-names = ["X", "X_*", "Xt", "return_X_y"]
+# matrices and return_X_y for the load-data flag. Plus a handful of
+# mathematical-notation names (DeLong's V10/V01 components, S
+# covariance matrix) that follow the source-paper conventions.
+extend-ignore-names = [
+    "X", "X_*", "Xt", "return_X_y",
+    "V10", "V01", "V10_*", "V01_*",
+    "S", "S_pos", "S_neg",
+]
 
 [tool.ruff.format]
 quote-style = "double"
