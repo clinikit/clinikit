@@ -170,6 +170,7 @@ ignore = [
 # covariance matrix) that follow the source-paper conventions.
 extend-ignore-names = [
     "X", "X_*", "Xt", "return_X_y",
+    "*_X", "*_X_*",
     "V10", "V01", "V10_*", "V01_*",
     "S", "S_pos", "S_neg",
 ]

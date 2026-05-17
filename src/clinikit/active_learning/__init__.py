@@ -1,13 +1,26 @@
-"""clinikit.active_learning — modAL-based labeling loops.
+"""clinikit.active_learning — modAL-based labelling loops.
 
-This module is an optional extra. Install with
+modAL is an optional dependency. Install the extra with
 ``pip install "clinikit[active]"``.
 
-Public functions
+Public function
+---------------
+- :func:`run_active_learning` — pool-based query loop with the
+  caller's own oracle.
+
+Public dataclass
 ----------------
-- run_active_learning(estimator, X_pool, y_pool, *, query_strategy, n_queries)
+- :class:`ActiveLearningResult`
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.active_learning._loop import (
+    ActiveLearningResult,
+    run_active_learning,
+)
+
+__all__ = [
+    "ActiveLearningResult",
+    "run_active_learning",
+]
