@@ -1,0 +1,76 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+MANIFEST
+wheels/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Testing & coverage
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Type & lint caches
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.dmypy.json
+dmypy.json
+
+# Documentation builds
+docs/_build/
+docs/_autosummary/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_meta
+
+# IDE / editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS noise
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Local artifacts
+*.log
+*.tmp
+*.bak
+.env
+.env.*
+!.env.example
+
+# clinikit working artifacts (never commit)
+artifacts/
+runs/
+leaderboard_local/
+models_cache/
+
+# Private project handover doc (local-only)
+CLAUDE.md

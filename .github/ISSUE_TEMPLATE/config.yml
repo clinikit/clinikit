@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and discussion
+    url: https://github.com/clinikit/clinikit/discussions
+    about: Please open a discussion for usage questions instead of an issue.
+  - name: Security report
+    url: https://github.com/clinikit/clinikit/security/policy
+    about: For security issues, follow the private reporting policy.

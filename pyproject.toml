@@ -1,0 +1,224 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "clinikit"
+version = "0.1.0"
+description = "A lightweight, sklearn-compatible Python toolkit for tabular machine learning."
+readme = "README.md"
+requires-python = ">=3.10,<3.14"
+license = { text = "MIT" }
+authors = [
+    { name = "Berat Kaan SEVEN", email = "beratkaanseven@gmail.com" },
+]
+keywords = [
+    "machine-learning",
+    "tabular-data",
+    "scikit-learn",
+    "classification",
+    "calibration",
+    "fairness",
+    "label-noise",
+    "selective-classification",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.2",
+    "scikit-learn>=1.4",
+    "scipy>=1.11",
+    "xgboost>=2.0",
+    "lightgbm>=4.0",
+    "catboost>=1.2",
+    "imbalanced-learn>=0.12",
+    "matplotlib>=3.8",
+    "typer>=0.9",
+    "jinja2>=3.1",
+    "joblib>=1.4",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "pytest-xdist>=3.5",
+    "ruff>=0.6",
+    "mypy>=1.10",
+    "pre-commit>=3.7",
+    "hatch>=1.13",
+]
+docs = [
+    "sphinx>=7.0",
+    "furo>=2024.0",
+    "nbsphinx>=0.9",
+    "myst-parser>=2.0",
+    "sphinx-copybutton>=0.5",
+]
+diagnostics = ["cleanlab>=2.7"]
+explain     = ["shap>=0.46", "lime>=0.2.0"]
+automl      = ["tabpfn>=2.0", "flaml>=2.2", "autogluon.tabular>=1.1"]
+synthetic   = ["sdv>=1.17"]
+advanced    = ["ngboost>=0.5", "interpret>=0.6", "feature-engine>=1.8"]
+conformal   = ["mapie>=0.9"]
+active      = ["modAL>=0.4"]
+all = [
+    "clinikit[dev,docs,diagnostics,explain,automl,synthetic,advanced,conformal,active]",
+]
+
+[project.urls]
+Homepage      = "https://github.com/clinikit/clinikit"
+Repository    = "https://github.com/clinikit/clinikit"
+Issues        = "https://github.com/clinikit/clinikit/issues"
+Changelog     = "https://github.com/clinikit/clinikit/blob/main/CHANGELOG.md"
+Documentation = "https://clinikit.readthedocs.io"
+
+[project.scripts]
+clinikit = "clinikit.cli:app"
+
+# ---------------------------------------------------------------------------
+# Hatch build configuration
+# ---------------------------------------------------------------------------
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/clinikit"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/clinikit/datasets/data" = "clinikit/datasets/data"
+"src/clinikit/report/templates" = "clinikit/report/templates"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/clinikit",
+    "tests",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "SECURITY.md",
+    "CITATION.cff",
+    "CITATIONS.md",
+    "roadmap.md",
+    "pyproject.toml",
+]
+
+# ---------------------------------------------------------------------------
+# Ruff (lint + format)
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+extend-exclude = [".venv", "build", "dist", "docs/_build"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "SIM", # flake8-simplify
+    "RUF", # ruff-specific
+    "PL",  # pylint
+    "PTH", # flake8-use-pathlib
+]
+ignore = [
+    "E501",   # line too long (formatter handles)
+    "PLR0913", # too many arguments
+    "PLR2004", # magic value comparison
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*"     = ["N802", "N803", "N806", "PLR2004"]
+"__init__.py" = ["F401"]
+"examples/*"  = ["E402", "F401"]
+"scripts/*"   = ["S310", "BLE001"]
+
+[tool.ruff.lint.pep8-naming]
+# sklearn convention: uppercase X / X_train / X_test for feature
+# matrices and return_X_y for the load-data flag.
+extend-ignore-names = ["X", "X_*", "Xt", "return_X_y"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+# ---------------------------------------------------------------------------
+# Mypy
+# ---------------------------------------------------------------------------
+
+[tool.mypy]
+python_version     = "3.10"
+strict             = false
+warn_return_any    = true
+warn_unused_configs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+files              = ["src"]
+exclude            = ["tests/", "examples/", "docs/"]
+
+# ---------------------------------------------------------------------------
+# Pytest
+# ---------------------------------------------------------------------------
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths  = ["tests"]
+addopts    = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: integration tests",
+    "sklearn_api: sklearn estimator compatibility checks",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:catboost.*",
+    "ignore::DeprecationWarning:lightgbm.*",
+]
+
+# ---------------------------------------------------------------------------
+# Coverage
+# ---------------------------------------------------------------------------
+
+[tool.coverage.run]
+source = ["src/clinikit"]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if TYPE_CHECKING:",
+    "if __name__ == .__main__.:",
+    "\\.\\.\\.",
+]
+fail_under = 80
+show_missing = true

@@ -1,0 +1,55 @@
+# See https://pre-commit.com for usage and reference.
+# Install hooks once:  pre-commit install
+# Run on all files:    pre-commit run --all-files
+
+default_language_version:
+  python: python3.13
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: check-added-large-files
+        args: ["--maxkb=512"]
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: debug-statements
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9
+    hooks:
+      - id: ruff
+        args: ["--fix", "--exit-non-zero-on-fix"]
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.11.2
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - numpy>=1.26
+          - pandas>=2.2
+          - types-PyYAML
+        args: ["--ignore-missing-imports"]
+        files: ^src/
+
+  - repo: local
+    hooks:
+      - id: forbid-author-name
+        name: Forbid hardcoded author username in src/tests/examples/docs
+        entry: bash -c 'grep -RIn -e beratkaanseven -- src tests examples docs 2>/dev/null && exit 1 || exit 0'
+        language: system
+        pass_filenames: false
+
+      - id: forbid-absolute-user-paths
+        name: Forbid hardcoded /Users/ or C:\\ paths in src/tests/examples/docs
+        entry: bash -c 'grep -RIn -E "/(Users|home)/|C:\\\\\\\\" -- src tests examples docs 2>/dev/null && exit 1 || exit 0'
+        language: system
+        pass_filenames: false

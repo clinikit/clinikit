@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+title: "clinikit: a tabular machine-learning toolkit"
+message: "If you use this software, please cite it using these metadata."
+type: software
+authors:
+  - family-names: SEVEN
+    given-names: Berat Kaan
+    email: beratkaanseven@gmail.com
+    website: "https://beratkaanseven.com"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+identifiers:
+  - type: url
+    value: "https://github.com/clinikit/clinikit"
+    description: "GitHub repository"
+repository-code: "https://github.com/clinikit/clinikit"
+url: "https://clinikit.readthedocs.io"
+abstract: >-
+  clinikit is a lightweight, scikit-learn-compatible Python toolkit for
+  tabular machine learning. It bundles 14 hybrid classifiers, five
+  experiment protocols, calibration utilities, label-noise diagnostics,
+  fairness audits, and structured HTML reports behind a single
+  drop-in package. The toolkit is intended for research and development
+  workflows only.
+keywords:
+  - machine-learning
+  - tabular-data
+  - scikit-learn
+  - classification
+  - calibration
+  - fairness
+  - label-noise
+  - selective-classification
+license: MIT
+version: 0.1.0
+date-released: 2026-05-17
