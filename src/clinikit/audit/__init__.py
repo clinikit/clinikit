@@ -1,15 +1,37 @@
-"""clinikit.audit — leakage detection, subgroup fairness, doc checks.
+"""clinikit.audit — leakage / fairness / documentation aids.
 
 Public functions
 ----------------
-- detect_leakage(X_train, X_test, y_train, y_test)
-- subgroup_fairness(y_true, y_pred, groups)
-- documentation_checklist(run)
+- :func:`detect_leakage`        — train/test contamination diagnostics.
+- :func:`subgroup_fairness`     — per-group performance + disparity.
+- :func:`documentation_checklist` — required-field check for a run record.
 
-These utilities are documentation aids for research workflows; they
-do not replace formal compliance review.
+Public dataclasses
+------------------
+- :class:`LeakageReport`
+- :class:`SubgroupFairnessReport`
+- :class:`DocumentationCheckResult`
+
+These helpers are documentation aids for research workflows; they do
+not replace formal compliance review.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.audit._audit import (
+    DocumentationCheckResult,
+    LeakageReport,
+    SubgroupFairnessReport,
+    detect_leakage,
+    documentation_checklist,
+    subgroup_fairness,
+)
+
+__all__ = [
+    "DocumentationCheckResult",
+    "LeakageReport",
+    "SubgroupFairnessReport",
+    "detect_leakage",
+    "documentation_checklist",
+    "subgroup_fairness",
+]

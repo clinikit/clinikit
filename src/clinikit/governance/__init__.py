@@ -1,19 +1,35 @@
 """clinikit.governance — audit-trail manifest templates.
 
-The governance module produces JSON / YAML manifests intended as
-documentation templates for research workflows. Outputs include a
-disclaimer line:
-
-    "Templates are for research documentation only."
+Outputs are *documentation templates* whose first line explicitly
+states that they are intended for research documentation and not
+for regulated decision-making (see :data:`GOVERNANCE_DISCLAIMER`).
 
 Public functions
 ----------------
-- generate_manifest(run, out_path)
-- list_required_fields()
+- :func:`generate_manifest`        — write a JSON or Markdown manifest.
+- :func:`list_required_fields`     — fields a complete manifest carries.
+- :func:`render_manifest_markdown` — render a payload as Markdown.
+
+Public data
+-----------
+- :data:`GOVERNANCE_DISCLAIMER`
+- :data:`MANIFEST_REQUIRED_FIELDS`
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.governance._manifests import (
+    GOVERNANCE_DISCLAIMER,
+    MANIFEST_REQUIRED_FIELDS,
+    generate_manifest,
+    list_required_fields,
+    render_manifest_markdown,
+)
 
-GOVERNANCE_DISCLAIMER = "Templates are for research documentation only."
+__all__ = [
+    "GOVERNANCE_DISCLAIMER",
+    "MANIFEST_REQUIRED_FIELDS",
+    "generate_manifest",
+    "list_required_fields",
+    "render_manifest_markdown",
+]
