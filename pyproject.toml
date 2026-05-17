@@ -148,10 +148,15 @@ ignore = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/*"     = ["N802", "N803", "N806", "PLR2004"]
+"tests/*"     = ["N802", "N803", "N806", "PLR2004", "PLC0415"]
 "__init__.py" = ["F401"]
 "examples/*"  = ["E402", "F401"]
 "scripts/*"   = ["S310", "BLE001"]
+# curves and plots use lazy intra-package imports inside methods/
+# functions to break a circular dependency cycle (curves.Curve.plot()
+# delegates to plots, plot_* helpers resolve curves dataclasses).
+"src/clinikit/curves/_curves.py" = ["PLC0415"]
+"src/clinikit/plots/_plots.py"   = ["PLC0415"]
 
 [tool.ruff.lint.pep8-naming]
 # sklearn convention: uppercase X / X_train / X_test for feature

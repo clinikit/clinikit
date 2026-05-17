@@ -1,17 +1,33 @@
-"""clinikit.plots — matplotlib wrappers for common figures.
+"""clinikit.plots — matplotlib wrappers for common diagnostic figures.
+
+Each helper accepts either a :mod:`clinikit.curves` dataclass or raw
+``(y_true, y_prob)`` arrays and returns the
+:class:`matplotlib.axes.Axes` it drew into. The caller owns the
+figure; no ``plt.show()`` is called.
 
 Public functions
 ----------------
-- plot_roc(y_true, y_score, *, ax=None)
-- plot_pr(y_true, y_score, *, ax=None)
-- plot_calibration(y_true, y_prob, *, n_bins=10, ax=None)
-- plot_decision_curve(y_true, y_prob, *, ax=None)
-- plot_threshold_sweep(y_true, y_prob, *, ax=None)
-
-Each function accepts an optional ``ax`` and returns the
-``matplotlib.axes.Axes`` it drew into.
+- :func:`plot_roc`
+- :func:`plot_pr`
+- :func:`plot_calibration`
+- :func:`plot_decision_curve`
+- :func:`plot_threshold_sweep`
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from clinikit.plots._plots import (
+    plot_calibration,
+    plot_decision_curve,
+    plot_pr,
+    plot_roc,
+    plot_threshold_sweep,
+)
+
+__all__ = [
+    "plot_calibration",
+    "plot_decision_curve",
+    "plot_pr",
+    "plot_roc",
+    "plot_threshold_sweep",
+]
