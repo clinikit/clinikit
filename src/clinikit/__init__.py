@@ -68,11 +68,42 @@ clinikit.cli
 
 from __future__ import annotations
 
+from clinikit.models import (
+    BoundaryRefineClassifier,
+    ClassConditionalImputer,
+    CrossDistributionDistiller,
+    DialecticalEnsemble,
+    DualViewCoTrainer,
+    ErrorAwareCalibrator,
+    HardSampleWeightedEnsemble,
+    InstanceAdaptiveThreshold,
+    IterativeLabelRefiner,
+    LatentSubtypeRouter,
+    MonotonicBooster,
+    RuleAugmentedClassifier,
+    SelectiveClassifier,
+    SubgroupThresholdClassifier,
+)
+
 __version__ = "0.1.0"
 __author__ = "Berat Kaan SEVEN"
 __license__ = "MIT"
 
 __all__ = [
+    "BoundaryRefineClassifier",
+    "ClassConditionalImputer",
+    "CrossDistributionDistiller",
+    "DialecticalEnsemble",
+    "DualViewCoTrainer",
+    "ErrorAwareCalibrator",
+    "HardSampleWeightedEnsemble",
+    "InstanceAdaptiveThreshold",
+    "IterativeLabelRefiner",
+    "LatentSubtypeRouter",
+    "MonotonicBooster",
+    "RuleAugmentedClassifier",
+    "SelectiveClassifier",
+    "SubgroupThresholdClassifier",
     "__author__",
     "__license__",
     "__version__",
