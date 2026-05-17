@@ -10,7 +10,8 @@ readme = "README.md"
 requires-python = ">=3.10,<3.14"
 license = { text = "MIT" }
 authors = [
-    { name = "Berat Kaan SEVEN", email = "beratkaanseven@gmail.com" },
+    { name = "Berat Kaan SEVEN" },
+    { email = "beratkaanseven@gmail.com" },
 ]
 keywords = [
     "machine-learning",
